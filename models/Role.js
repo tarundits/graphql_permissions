@@ -11,14 +11,9 @@ const roleSchema = new mongoose.Schema({
 		required: true, 
 		unique: true 
 	},
-    permissions: [
-		{ 
-			type: mongoose.Schema.Types.ObjectId, 
-			ref: 'Permission' 
-		}
-	],
+    permissions: mongoose.Schema.Types.Mixed
 });
 
 const Role = mongoose.model('Role', roleSchema);
 
-module.exports = Role;
+export default Role;
