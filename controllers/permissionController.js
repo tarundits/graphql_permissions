@@ -6,16 +6,24 @@ const fetchAllPermissions = async () => {
 		const permissions = Permission.find({});
 		return permissions;
 	} catch (error) {
-		console.log(error.message);
+		return new GraphQLError('No permissions exists.', {
+			extensions: {
+				code: 'FORBIDDEN',
+			}
+		});
 	}
 }
 
 const fetchPermission = async (parent, { id }, { req, res }) => {
 	try {
-		const permission = Permission.findById({ id });
+		const permission = Permission.findById({ _id: id });
 		return permission;
 	} catch (error) {
-		console.log(error.message);
+		return new GraphQLError('Permission with this id does not exists.', {
+			extensions: {
+				code: 'FORBIDDEN',
+			}
+		});
 	}
 }
 

@@ -19,6 +19,23 @@ query GetAllPermissions {
 }
 ```
 
+### Fetch Single Permission
+
+```graphql
+query fetchPermission($id: String) {
+  getPermission(id: $id) {
+    _id
+    name
+  }
+}
+```
+
+```json
+{
+  "id": "6QJM15hg7Wd7vni4bol4i"
+}
+```
+
 ### Create Permission
 
 ```graphql
